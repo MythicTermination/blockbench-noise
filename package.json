@@ -1,0 +1,86 @@
+{
+	"name": "Blockbench",
+	"description": "Model editing and animation software",
+	"version": "3.3.1",
+	"license": "MIT",
+	"author": {
+		"name": "JannisX11",
+		"email": "info@blockbench.net"
+	},
+	"homepage": "https://blockbench.net",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JannisX11/blockbench"
+	},
+	"main": "main.js",
+	"build": {
+		"appId": "blockbench",
+		"productName": "Blockbench",
+		"artifactName": "${productName}_${arch}_${version}.${ext}",
+		"mac": {
+			"category": "macOS.application",
+			"target": "dmg"
+		},
+		"files": [
+			"assets/",
+			"build/",
+			"css/",
+			"font/",
+			"js",
+			"lib",
+			"lang",
+			"main.js",
+			"index.html",
+			"package.json",
+			"favicon.png",
+			"icon.icns",
+			"icon.ico",
+			"icon.png"
+		],
+		"dmg": {
+			"artifactName": "${productName}_${version}.${ext}",
+			"backgroundColor": "#282c34",
+			"window": {
+				"x": 200,
+				"y": 100,
+				"width": 440,
+				"height": 220
+			},
+			"contents": [
+				{
+					"x": 130,
+					"y": 120
+				},
+				{
+					"x": 360,
+					"y": 120,
+					"type": "link",
+					"path": "/Applications"
+				}
+			]
+		},
+		"win": {
+			"artifactName": "${productName}_${arch}_${version}.${ext}",
+			"target": "nsis"
+		},
+		"linux": {
+			"artifactName": "${productName}_${version}.${ext}",
+			"target": [
+				"deb",
+				"rpm"
+			],
+			"category": "3DGraphics"
+		}
+	},
+	"scripts": {
+		"dist": "electron-builder --publish=always",
+		"win64": "electron-builder -w --ia32 --publish=always",
+		"win32": "electron-builder -w --x64 --publish=always",
+		"beta": "electron-builder --windows portable"
+	},
+	"devDependencies": {
+		"async": "^2.4.1",
+		"electron": "6.1.4",
+		"electron-builder": "^21.2.0"
+	}
+}

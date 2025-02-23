@@ -1458,7 +1458,7 @@ BARS.defineActions(function() {
 		tool_setting: 'brush_size',
 		category: 'paint',
 		settings: {
-			min: 1, max: 50, interval: 1, default: 1,
+			min: 1, max: 1024, interval: 1, default: 1,
 		}
 	})
 	new NumSlider('slider_brush_softness', {

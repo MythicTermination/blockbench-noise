@@ -1,0 +1,40 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js: "10"
+
+matrix:
+  include:
+    - name: "macOS + Win Portable"
+      os: osx
+      script:
+        - electron-builder --publish=always
+        - electron-builder --windows portable --x64 --publish=always -c.productName='Blockbench_portable'
+
+    - name: "Windows"
+      os: osx
+      script:
+        - electron-builder -w --x64 --publish=always
+        - electron-builder -w --ia32 --publish=always -c.productName='Blockbench_32bit'
+
+    - name: "Linux"
+      os: linux
+      script:
+        - sudo apt-get install rpm
+        - electron-builder --publish=always
+
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - nvm install 10
+  - npm install electron-builder
+
+script:
+  - electron-builder --publish=always
+
+notifications:
+  email: false
